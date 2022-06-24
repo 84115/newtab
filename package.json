@@ -1,0 +1,30 @@
+{
+  "name": "newtab",
+  "version": "1.0.0",
+  "description": "My newtab page",
+  "main": "index.js",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/84115/newtab.git"
+  },
+  "keywords": [
+    "84115",
+    "newtab",
+    "personal"
+  ],
+  "author": "James Ball",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/84115/newtab/issues"
+  },
+  "homepage": "https://github.com/84115/newtab#readme"
+}
