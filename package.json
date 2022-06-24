@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm run prod"
+    "build": "tailwindcss build style.css -o css/style.css"
   },
   "repository": {
     "type": "git",
