@@ -15,8 +15,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-    <body class="p-[3.5%]">
-        <div class="grid grid-cols-4 grid-flow-col gap-3">
+    <body class="p-[10%] sm:p-[6%] md:p-[3.5%]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             <section>
                 <h2>Work</h2>
                 <ul>
@@ -147,8 +147,11 @@
                 background-color: #6d41a1;
 
                 background: linear-gradient(0deg, #462a68 0%, #6d41a1 100%);
-
-                height: 100vh;
+            }
+            @media (min-width: 768px) {
+                body {
+                    height: 100vh;
+                }
             }
             h2 {
                 font-size: 1.2rem;
