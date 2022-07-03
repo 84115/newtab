@@ -105,7 +105,7 @@
             <section>
                 <h2>Chill</h2>
                 <ul>
-                    <li><a href="https://www.youtube.com/feed/subscriptions">Youtube/Subscriptions</a></li>
+                    <li><a id="first" href="https://www.youtube.com/feed/subscriptions">Youtube/Subscriptions</a></li>
                     <li><a href="https://www.youtube.com/playlist?list=WL">Youtube/Watch Later</a></li>
                     <li><a href="https://www.youtube.com/playlist?list=WL">Youtube/Podcasts</a></li>
                     <li><a href="https://open.spotify.com">Spotify</a></li>
@@ -138,6 +138,46 @@
                 </ul>
             </section>
         </div>
+
+        <script>
+            const links = document.getElementsByTagName('a');
+            const alphaCodes = Array.from(Array(26)).map((e, i) => i + 65);
+            const alphabetLower = alphaCodes.map((x) => String.fromCharCode(x).toLowerCase());
+            const alphabetUpper = alphaCodes.map((x) => String.fromCharCode(x));
+            const nums = Array.from(Array(10).keys());
+            const special = [
+                '!','@','#','$','%','^','&','*','(',')','_','+','-','=',
+                '[',']','{','}',':',';','"',
+                '\'', '|', ',','<','.','>','/','?',
+            ];
+
+            const keycodes = [...nums, ...alphabetLower, ...alphabetUpper, ...special];
+
+            window.onload = function() {
+                var counter = 0;
+
+                for (const link of links) {
+                    link.setAttribute('id', `link-${keycodes[counter]}`);
+                    link.innerHTML = `${link.innerText}&nbsp;&nbsp;<small><small>${keycodes[counter]}</small></small>`;
+
+                    counter++;
+                }
+            };
+
+            document.onkeypress = function(evt) {
+                evt = evt || window.event;
+                var charCode = evt.keyCode || evt.which;
+                var charStr = String.fromCharCode(charCode);
+
+                goto(`link-${charStr}`);
+            };
+
+            function goto(id) {
+                var link = document.getElementById(id);
+
+                window.location = link.getAttribute('href');
+            };
+        </script>
 
         <style>
             body {
