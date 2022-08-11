@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="apple-mobile-web-app-title" content="newtab">
+
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <meta name="theme-color" content="#462a68" />
+
+        <title>newtab+ - archive</title>
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body class="p-[10%] sm:p-[6%] md:p-[3.5%]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <section>
+                <h2>Worth What</h2>
+                <ul>
+                    <li><a href="https://worthwhat.com">Site</a></li>
+                    <li><a href="https://worthwhat.com/wp-admin">Wordpress Login</a></li>
+                    <li><a href="https://api.worthwhat.com">API</a></li>
+                    <li><a href="https://oauth.worthwhat.com">OAuth</a></li>
+                    <li><a href="https://trello.com/b/sL0K5hnJ/worth-what">Trello Board</a></li>
+                    <li><a href="https://drive.google.com/drive/folders/16406stRQb098GZifctmaZ7LKnqD-YiZh">Drive/Invoices</a></li>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1muoeOQsmgjt2rcAMv4eiVqDO9XxT8G0clneczs5OZq8/edit#gid=0">Drive/Timesheet</a></li>
+                </ul>
+                <br>
+                <h2>Worth What/Staging</h2>
+                <ul>
+                    <li><a href="https://staging.worthwhat.com">Site</a></li>
+                    <li><a href="https://staging.worthwhat.com/wp-admin">Wordpress Login</a></li>
+                    <li><a href="https://worthwhat.com/phpma">phpMyAdmin</a></li>
+                </ul>
+                <br>
+                <h2>Antiques Appraisals</h2>
+                <ul>
+                    <li><a href="https://www.antiqueappraisals.net">Site</a></li>
+                    <li><a href="https://trello.com/b/c9lCtGbD/antique-appraisals">Trello Board</a></li>
+                </ul>
+                <br>
+                <h2>Chinese Antiques</h2>
+                <ul>
+                    <li><a href="https://www.chineseantiques.co.uk/">Site</a></li>
+                    <li><a href="https://trello.com/b/ZochSNwn/chinese-antiques">Trello Board</a></li>
+                </ul>
+            </section>
+
+
+            <footer style="position: fixed; bottom: 2rem; right: 2rem;">
+                <a href="index.html">Back</a>
+            </footer>
+        </div>
+
+        <script>
+            const links = document.getElementsByTagName('a');
+            const alphaCodes = Array.from(Array(26)).map((e, i) => i + 65);
+            const alphabetLower = alphaCodes.map((x) => String.fromCharCode(x).toLowerCase());
+            const alphabetUpper = alphaCodes.map((x) => String.fromCharCode(x));
+            const nums = Array.from(Array(10).keys());
+            const special = [
+                '!','@','#','$','%','^','&','*','(',')','_','+','-','=',
+                '[',']','{','}',':',';','"',
+                '\'', '|', ',','<','.','>','/','?',
+            ];
+
+            const keycodes = [...nums, ...alphabetLower, ...alphabetUpper, ...special];
+
+            window.onload = function() {
+                var counter = 0;
+
+                for (const link of links) {
+                    link.setAttribute('id', `link-${keycodes[counter]}`);
+                    link.innerHTML = `${link.innerText}&nbsp;&nbsp;<small><small>${keycodes[counter]}</small></small>`;
+
+                    counter++;
+                }
+            };
+
+            document.onkeypress = function(evt) {
+                evt = evt || window.event;
+                var charCode = evt.keyCode || evt.which;
+                var charStr = String.fromCharCode(charCode);
+
+                goto(`link-${charStr}`);
+            };
+
+            function goto(id) {
+                var link = document.getElementById(id);
+
+                window.location = link.getAttribute('href');
+            };
+        </script>
+
+        <style>
+            body {
+                color: white;
+                background-color: #462a68;
+                background-color: #6d41a1;
+
+                background: linear-gradient(0deg, #462a68 0%, #6d41a1 100%);
+            }
+            @media (min-width: 768px) {
+                body {
+                    height: 100vh;
+                }
+            }
+            h2 {
+                font-size: 1.2rem;
+                font-weight: bolder;
+                border-bottom: 4px solid white;
+                display: inline-block;
+                clear: both;
+                margin-bottom: 1rem;
+            }
+            a {
+                /* text-decoration: underline; */
+            }
+            .loose {
+                display: inline-block;
+                margin-right: 0.75rem;
+            }
+        </style>
+    </body>
+</html>
